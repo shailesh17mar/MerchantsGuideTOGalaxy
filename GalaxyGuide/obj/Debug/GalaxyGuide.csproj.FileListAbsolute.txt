@@ -1,0 +1,5 @@
+c:\users\shailesh\documents\visual studio 2012\Projects\GalaxyGuide\GalaxyGuide\bin\Debug\GalaxyGuide.dll
+c:\users\shailesh\documents\visual studio 2012\Projects\GalaxyGuide\GalaxyGuide\bin\Debug\GalaxyGuide.pdb
+c:\users\shailesh\documents\visual studio 2012\Projects\GalaxyGuide\GalaxyGuide\obj\Debug\GalaxyGuide.csprojResolveAssemblyReference.cache
+c:\users\shailesh\documents\visual studio 2012\Projects\GalaxyGuide\GalaxyGuide\obj\Debug\GalaxyGuide.dll
+c:\users\shailesh\documents\visual studio 2012\Projects\GalaxyGuide\GalaxyGuide\obj\Debug\GalaxyGuide.pdb
