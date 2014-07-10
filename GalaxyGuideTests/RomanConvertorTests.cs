@@ -8,14 +8,15 @@ using NUnit.Framework;
 
 namespace GalaxyGuideTests
 {
+    [TestFixture]
     public class RomanConvertorTests
     {
-        private RomanConvertor _convertor;
+        private RomanValueCalculator _valueCalculator;
 
         [SetUp]
         public void Initialize()
         {
-            _convertor = new RomanConvertor();
+            _valueCalculator = new RomanValueCalculator();
         }   
 
         [Test]
@@ -27,21 +28,21 @@ namespace GalaxyGuideTests
         [Test]
         public void IShouldReturnOne()
         {
-            var number = _convertor.Convert("I");
+            var number = _valueCalculator.Convert("I");
             Assert.AreEqual(number, 1);
         }
 
         [Test]
         public void IIShouldReturnTwo()
         {
-            var number = _convertor.Convert("II");
+            var number = _valueCalculator.Convert("II");
             Assert.AreEqual(2, number);
         }
 
         [Test]
         public void IIIShouldReturnThree()
         {
-            var number = _convertor.Convert("III");
+            var number = _valueCalculator.Convert("III");
             Assert.AreEqual(3, number);
         }
 
@@ -49,20 +50,20 @@ namespace GalaxyGuideTests
         [ExpectedException(typeof(ArgumentException))]
         public void IIIIShouldThrowInvalidNumberException()
         {
-            var number = _convertor.Convert("IIII");
+            var number = _valueCalculator.Convert("IIII");
         }
 
         [Test]
         public void VShouldReturnFive()
         {
-            var number = _convertor.Convert("V");
+            var number = _valueCalculator.Convert("V");
             Assert.AreEqual(5,number);
         }
 
         [Test]
         public void VIShouldReturnSix()
         {
-            var number = _convertor.Convert("VI");
+            var number = _valueCalculator.Convert("VI");
             Assert.AreEqual(6, number);
         }
 
@@ -70,72 +71,109 @@ namespace GalaxyGuideTests
         [ExpectedException(typeof(ArgumentException))]
         public void VIIIIShouldThrowInvalidNumberException()
         {
-            var number = _convertor.Convert("VIIII");
+            var number = _valueCalculator.Convert("VIIII");
         }
 
         [Test]
         public void IVShouldReturnFour()
         {
-            var number = _convertor.Convert("IV");
+            var number = _valueCalculator.Convert("IV");
             Assert.AreEqual(4, number);
         }
 
         [Test]
         public void IXShouldReturnNine()
         {
-            var number = _convertor.Convert("IX");
+            var number = _valueCalculator.Convert("IX");
             Assert.AreEqual(9, number);
         }
 
         [Test]
         public void XIXShouldReturnNineteen()
         {
-            var number = _convertor.Convert("XIX");
+            var number = _valueCalculator.Convert("XIX");
             Assert.AreEqual(19, number);
         }
 
         [Test]
         public void XXIVShouldReturnTwentyFour()
         {
-            var number = _convertor.Convert("XXIV");
+            var number = _valueCalculator.Convert("XXIV");
             Assert.AreEqual(24, number);
+        }
+
+        [Test]
+        public void MCMIIIShouldReturn1903()
+        {
+            var number = _valueCalculator.Convert("MCMIII");
+            Assert.AreEqual(1903, number);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldNotContainMoreThanOneD()
         {
-            var number = _convertor.Convert("DD");
+            var number = _valueCalculator.Convert("DD");
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldNotContainMoreThanOneL()
         {
-            var number = _convertor.Convert("LL");
+            var number = _valueCalculator.Convert("LL");
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void ShouldNotContainMoreThanOneV()
         {
-            var number = _convertor.Convert("VIV");
+            var number = _valueCalculator.Convert("VIV");
         }
 
-        [Test]
-        public void MCMIIIShouldReturn1903()
-        {
-            var number = _convertor.Convert("MCMIII");
-            Assert.AreEqual(1903, number);
-        }
-
+        
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void ILShouldThrowException()
         {
-            var number = _convertor.Convert("IL");
+            var number = _valueCalculator.Convert("IL");
         }
 
+    }
+
+
+    [TestFixture]
+    public class CurrencyConvertorShould
+    {
+        private CurrencyConvertor _currencyConvertor;
+
+        [SetUp]
+        public void Initialize()
+        {
+            _currencyConvertor = new CurrencyConvertor();
+        }
+
+        [Test]
+        public void EvaluateTheIsExpression()
+        {
+            _currencyConvertor.Evaluate("Blob is I");
+
+            Assert.AreEqual(_currencyConvertor.CurrencyTable[RomanChart.I],"Blob");
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ThrowExceptionIfInvalidRomanCharacterSpecified()
+        {
+            _currencyConvertor.Evaluate("Blob is K");
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void ThrowExceptionIfExpressionDoesNotContainIsOperator()
+        {
+            _currencyConvertor.Evaluate("Blob yo I");
+        }
 
     }
+    
 }

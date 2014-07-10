@@ -1,14 +1,21 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GalaxyGuide
 {
-    public class RomanConvertor
+    public enum RomanChart
+    {
+        I = 1,
+        V = 5,
+        X = 10,
+        L = 50,
+        C = 100,
+        D = 500,
+        M = 1000
+    }
+
+    public class RomanValueCalculator
     {
         private List<RomanChart> _romanString;
 
@@ -16,7 +23,7 @@ namespace GalaxyGuide
 
         private DLVRepetitionValidator _validationChainHeader;
 
-        public RomanConvertor()
+        public RomanValueCalculator()
         {
             _romanString=new List<RomanChart>();
             _validationChainHeader=new DLVRepetitionValidator();
@@ -68,17 +75,5 @@ namespace GalaxyGuide
             return sum;
         }
 
-    }
-
-
-    public enum RomanChart
-    {
-        I = 1,
-        V = 5,
-        X = 10,
-        L = 50,
-        C = 100,
-        D = 500,
-        M = 1000
     }
 }

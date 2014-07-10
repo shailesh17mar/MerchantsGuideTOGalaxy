@@ -39,9 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrencyConvertor.cs" />
     <Compile Include="Dictionary.cs" />
-    <Compile Include="RomanConvertor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomanValueCalculator.cs" />
     <Compile Include="RuleValidator.cs" />
     <Compile Include="RuleValidatorManager.cs" />
   </ItemGroup>
